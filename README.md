@@ -1,4 +1,2 @@
-# DataJuggler.Net5
-This is the .Net5 version of DataJuggler.Net
-
-This class powers DataTier.Net and DB Compare. If you ever need to programmatically read database schema, this project will project save you time.
+# DataJuggler.Net
+DataJuggler.Net is a core component of several Data Juggler projects including DataTier.Net, DB Compare and XML Mirror.
