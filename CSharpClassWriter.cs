@@ -37,35 +37,57 @@ namespace DataJuggler.Net5
         private const string EnumerationsReference = "DataJuggler.Net5.Enumerations";
         #endregion
 		
-		#region Constructor
-		/// <summary>
-		/// Create a new instance of a CSharpClassWriter.
-		/// </summary>
-		/// <param name="fileManager">The fileManager is used to keep track of which 
-        /// files were added during a build.
-        /// </param>
-		/// <param name="businessObjectPassArg">If true the business class is created, else the data class.
-        /// This is for the .business.cs
-        /// </param>
-        /// <param name="textWriterMode">Set this to true to create a StringBuilder instead of a StreamWriter.</param>
-		public CSharpClassWriter(ProjectFileManager fileManager, bool businessObjectPassArg, bool textWriterMode = false)
-		{
-		    // set the FileManager 
-		    this.FileManager = fileManager;
+		#region Constructors
+
+			#region Default Constructor
+			/// <summary>
+			/// Create a new instance of a CSharpClassWriter object
+			/// </summary>
+			public CSharpClassWriter(bool textWriterMode = false)
+			{
+				// store the arg for TextWriterMode
+				this.TextWriterMode = textWriterMode;
+
+				// if the value for TextWriterMode is true
+				if (TextWriterMode)
+				{
+					// Create a new instance of a 'StringBuilder' object.
+					this.TextWriter = new StringBuilder();
+				}
+			}
+			#endregion
+
+			#region DataTier.Net Usage
+			/// <summary>
+			/// Create a new instance of a CSharpClassWriter.
+			/// </summary>
+			/// <param name="fileManager">The fileManager is used to keep track of which 
+			/// files were added during a build.
+			/// </param>
+			/// <param name="businessObjectPassArg">If true the business class is created, else the data class.
+			/// This is for the .business.cs
+			/// </param>
+			/// <param name="textWriterMode">Set this to true to create a StringBuilder instead of a StreamWriter.</param>
+			public CSharpClassWriter(ProjectFileManager fileManager, bool businessObjectPassArg, bool textWriterMode = false)
+			{
+				// set the FileManager 
+				this.FileManager = fileManager;
 		
-            // set the BusinessObjectPass property
-		    this.BusinessObjectPass = businessObjectPassArg;
+				// set the BusinessObjectPass property
+				this.BusinessObjectPass = businessObjectPassArg;
 
-            // store the arg for TextWriterMode
-            this.TextWriterMode = textWriterMode;
+				// store the arg for TextWriterMode
+				this.TextWriterMode = textWriterMode;
 
-            // if the value for TextWriterMode is true
-            if (TextWriterMode)
-            {
-                // Create a new instance of a 'StringBuilder' object.
-                this.TextWriter = new StringBuilder();
-            }
-		}
+				// if the value for TextWriterMode is true
+				if (TextWriterMode)
+				{
+					// Create a new instance of a 'StringBuilder' object.
+					this.TextWriter = new StringBuilder();
+				}
+			}
+			#endregion
+
 		#endregion
 
 		#region Methods

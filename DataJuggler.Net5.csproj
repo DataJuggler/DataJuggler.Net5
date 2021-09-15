@@ -17,12 +17,14 @@ CSharpClassWriter - A class that is useful in code generating C# classes.
 </Description>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.Net5</PackageProjectUrl>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
     <Copyright>Data Juggler - Corby Nichols</Copyright>
     <RepositoryType>Git Hub</RepositoryType>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.Net5.git</RepositoryUrl>
     <PackageTags>C#, SQL Server, DataTier.Net, DataJuggler.Net</PackageTags>
-    <PackageReleaseNotes>Version 3.0.0: I changed out System.Data.SqlClient to Microsoft.Data.SqlClient, so I updated this package to
+    <PackageReleaseNotes>Version 3.0.1: I created a default constructor for CSharpClassWriter, so it is not only for DataTier.Net
+
+Version 3.0.0: I changed out System.Data.SqlClient to Microsoft.Data.SqlClient, so I updated this package to
 version 3.0.0 to be the same version as Microsoft.Data.SqlClient.
 
 Version 2.5.1: I added 2 new methods to SQLDatabaseConnector for FindTable and FindTableIndex. It surprises me this doesn't exist somewhere in the app.
