@@ -206,14 +206,17 @@ namespace DataJuggler.Net5
 
 				switch(dataType)
 				{
-					case DataManager.DataTypeEnum.Autonumber:
-					case DataManager.DataTypeEnum.Currency:
-					case DataManager.DataTypeEnum.Double:
-					case DataManager.DataTypeEnum.String:
-					case DataManager.DataTypeEnum.Integer:
-					case DataManager.DataTypeEnum.DateTime:
-			        case DataManager.DataTypeEnum.Boolean:
-			        case DataManager.DataTypeEnum.Guid:
+					case DataTypeEnum.Autonumber:
+					case DataTypeEnum.Currency:
+					case DataTypeEnum.Double:
+					case DataTypeEnum.String:
+					case DataTypeEnum.Integer:
+					case DataTypeEnum.DateTime:
+			        case DataTypeEnum.Boolean:
+			        case DataTypeEnum.Guid:
+					
+					// Added Object for supporting custom code generations (outside of DataTier.Net)
+					case DataTypeEnum.Object:
 
                         // these fields are supported
                         isSupported = true;
@@ -489,6 +492,7 @@ namespace DataJuggler.Net5
             public enum DataTypeEnum : int
             {
                 NotSupported = 0,
+				Object = 1,
                 Autonumber = 3,
                 Currency = 6,
                 DateTime = 7,
