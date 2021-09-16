@@ -33,6 +33,8 @@ namespace DataJuggler.Net5
         private ProjectFileManager fileManager;
         private bool textWriterMode;
         private StringBuilder textWriter;
+		private bool doNotPrependExtension;
+		private bool doNotUsePartialClass;
         private const string DelegatesReference = "DataJuggler.Net5.Delegates";
         private const string EnumerationsReference = "DataJuggler.Net5.Enumerations";
         #endregion
@@ -372,7 +374,7 @@ namespace DataJuggler.Net5
 					        case DataManager.DataTypeEnum.Boolean:
 					        case DataManager.DataTypeEnum.YesNo:
 						        
-						        // set dataType to bool 
+						        // set dataType 
 						        dataType =  "bool";
 
                                 // required
@@ -380,8 +382,16 @@ namespace DataJuggler.Net5
 
                             case DataManager.DataTypeEnum.Guid:
 
-                                // set dataType to bool 
+                                // set dataType 
                                 dataType = "Guid";
+
+                                // required
+                                break;
+
+							case DataManager.DataTypeEnum.Object:
+
+								// set dataType
+                                dataType = "object";
 
                                 // required
                                 break;
@@ -761,16 +771,25 @@ namespace DataJuggler.Net5
                 // Create StringBuilder
                 StringBuilder sb = new StringBuilder(className);
 
-                if (this.BusinessObjectPass)
-                {
-                    // append .business.cs
-                    sb.Append(".business.cs");
-                }
-                else
-                {
-                    // append .data.cs
-                    sb.Append(".data.cs");
-                }
+				// if the value for DoNotPrependExtension is true
+				if (DoNotPrependExtension)
+				{
+					// only add the .cs extension
+					sb.Append(".cs");
+				}
+				else
+				{
+					if (this.BusinessObjectPass)
+					{
+						// append .business.cs
+						sb.Append(".business.cs");
+					}
+					else
+					{
+						// append .data.cs
+						sb.Append(".data.cs");
+					}
+				}
 
                 // classFileName
                 string classFileName = sb.ToString();
@@ -1509,6 +1528,13 @@ namespace DataJuggler.Net5
 			{
 				// Build Class Line
 				StringBuilder sb = new StringBuilder("public partial class ");
+
+				// if the value for doNotUsePartialClass is true
+				if (doNotUsePartialClass)
+				{
+					// do not use the word Partial
+					sb = new StringBuilder("public class ");
+				}
 
 				// Append ClassName
 				sb.Append(ClassName);
@@ -3825,6 +3851,28 @@ namespace DataJuggler.Net5
             {
                 get { return businessObjectPass; }
                 set { businessObjectPass = value; }
+            }
+            #endregion
+
+			#region DoNotPrependExtension
+            /// <summary>
+            /// Is this the true, .business.cs and / or .data.cs will not be written.
+            /// </summary>
+            public bool DoNotPrependExtension
+            {
+                get { return doNotPrependExtension; }
+                set { doNotPrependExtension = value; }
+            }
+            #endregion
+
+			#region DoNotUsePartialClass
+            /// <summary>
+            /// Is this the true, .business.cs and / or .data.cs will not be written.
+            /// </summary>
+            public bool DoNotUsePartialClass
+            {
+                get { return doNotUsePartialClass; }
+                set { doNotUsePartialClass = value; }
             }
             #endregion
 
