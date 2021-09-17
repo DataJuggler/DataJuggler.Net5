@@ -17,12 +17,19 @@ CSharpClassWriter - A class that is useful in code generating C# classes.
 </Description>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/DataJuggler/DataJuggler.Net5</PackageProjectUrl>
-    <Version>3.0.4</Version>
+    <Version>3.0.6</Version>
     <Copyright>Data Juggler - Corby Nichols</Copyright>
     <RepositoryType>Git Hub</RepositoryType>
     <RepositoryUrl>https://github.com/DataJuggler/DataJuggler.Net5.git</RepositoryUrl>
     <PackageTags>C#, SQL Server, DataTier.Net, DataJuggler.Net</PackageTags>
-    <PackageReleaseNotes>Version 3.0.4: Not sure why, but Nuget was giving me warning on 3.0.3 version. Trying again.
+    <PackageReleaseNotes>3.0.6: I added a new property called CreatedFilePaths. This list of strings will contain the full path of all
+files created during WriteClasses method.
+
+Also, I found out why I had problems with Nuget version 3.0.2 - 3.0.5. I had a project reference and a Nuget reference, and Nuget and / or Visual Studio didn't like it.
+
+Version 3.0.5: I updated the Read Me about a new project that uses CSharpClassWriter.
+
+Version 3.0.4: Not sure why, but Nuget was giving me warning on 3.0.3 version. Trying again.
 
 Version 3.0.3: I made a few changes to CSharpClassWriter to make it easier to code generate from outside DataTier.Net. My project DataJuggler.Excelerate now has a code generator, so the header row in an Excel sheet
 can be used to create a class.

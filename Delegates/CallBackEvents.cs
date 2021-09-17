@@ -3,6 +3,7 @@
 #region using statements
 
 using DataJuggler.Net5.Enumerations;
+using System.Collections.Generic;
 
 #endregion
 

@@ -35,6 +35,7 @@ namespace DataJuggler.Net5
         private StringBuilder textWriter;
 		private bool doNotPrependExtension;
 		private bool doNotUsePartialClass;
+		private List<string> createdFilePaths;
         private const string DelegatesReference = "DataJuggler.Net5.Delegates";
         private const string EnumerationsReference = "DataJuggler.Net5.Enumerations";
         #endregion
@@ -1868,6 +1869,9 @@ namespace DataJuggler.Net5
 				{
 					return false;
 				}
+
+				// Update 9.17.2021: Keep track of the files created
+				CreatedFilePaths = new List<string>();
 				
                 // Write the classes for every table in all databases
                 foreach(Database db in dataManager.Databases)
@@ -1922,6 +1926,9 @@ namespace DataJuggler.Net5
 
                             // Close The File
                             this.CloseFile();
+
+							// Add this path
+							CreatedFilePaths.Add(fullPath);
                         }
                     }
                 }
@@ -3853,6 +3860,23 @@ namespace DataJuggler.Net5
                 set { businessObjectPass = value; }
             }
             #endregion
+
+			#region CreatedFilePaths
+			/// <summary>
+			/// This is used by DataJuggler.Excelerate to get the file(s) created.
+			/// </summary>
+			public List<string> CreatedFilePaths
+			{
+				get
+				{
+					return createdFilePaths;
+				}
+				set
+				{
+					createdFilePaths = value;
+				}
+			}
+			#endregion
 
 			#region DoNotPrependExtension
             /// <summary>

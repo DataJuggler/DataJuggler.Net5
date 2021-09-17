@@ -3,6 +3,7 @@
 #region using statements
 
 using System.Collections.Generic;
+using DataJuggler.UltimateHelper;
 
 #endregion
 
@@ -45,6 +46,33 @@ namespace DataJuggler.Net5
 		#endregion
 
 		#region Methods
+
+			#region GetFieldNames(DataRow row)
+			/// <summary>
+			/// This method returns a list of field names for this row.
+			/// </summary>
+			/// <param name="row"></param>
+			/// <returns></returns>
+			public static List<string> GetFieldNames(DataRow row)
+			{
+				// initial value
+				List<string> fieldNames = new List<string>();
+
+				// If the row object exists
+				if ((NullHelper.Exists(row)) && (ListHelper.HasOneOrMoreItems(row.Fields)))
+				{
+					// iterate the fields
+					foreach	(DataField field in row.Fields)
+					{
+						// Add the fieldName
+						fieldNames.Add(field.FieldName);		
+					}
+				}
+
+				// return value
+				return fieldNames;
+			}
+			#endregion
 
 			#region IsNumeric(string expression) bool
 			public bool IsNumeric(string expression) 
